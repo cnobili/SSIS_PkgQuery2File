@@ -1,0 +1,55 @@
+truncate table QueryToFile.DataExtractDef;
+
+insert into QueryToFile.DataExtractDef
+(
+  ExtractName
+, LogToDbConnStr
+, SourceDbType
+, SourceDbConnStr
+, SourceDbQuery
+, OutputFile
+, Delimiter
+, ColumnHeaderFlg
+, ActiveFlg
+, GroupName
+)
+values
+(
+  'ClarityDep'
+, 'Data Source=EPICCDWDBTST;Initial Catalog=JMHETL;Integrated Security=True;'
+, 'SQL'  
+, 'Provider=SQLNCLI11;Server=EPICCLARITYBLD;Database=Clarity;User Id=clarityreport;Password=Parlon45!'
+, 'select * from clarity_dep'
+, 'H:\Temp\clarity_dep.dat'
+, '|'
+, 'Y'
+, 'Y'
+, 'Cogito'
+);
+
+insert into QueryToFile.DataExtractDef
+(
+  ExtractName
+, LogToDbConnStr
+, SourceDbType  
+, SourceDbConnStr
+, SourceDbQuery
+, OutputFile
+, Delimiter
+, ColumnHeaderFlg
+, ActiveFlg
+, GroupName
+)
+values
+(
+  'DepartmentDim'
+, 'Data Source=EPICCDWDBTST;Initial Catalog=JMHETL;Integrated Security=True;'
+, 'SQL'  
+, 'Data Source=EPICCDWDBDEV;Initial Catalog=EDW;Provider=SQLNCLI11.1;Integrated Security=SSPI;'
+, 'select * from DepartmentDim'
+, 'H:\Temp\DepartmentDim.dat'
+, '|'
+, 'Y'
+, 'Y'
+, 'Clarity'
+);
